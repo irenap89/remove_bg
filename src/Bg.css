@@ -1,0 +1,40 @@
+.bg_main{
+    background-color: #222A34;
+    width: 1000px;
+    height: 800px;
+    margin: 0 auto;
+    margin-top: 170px;
+    border-radius: 25px;
+    box-shadow: 1px 1px 10px black;
+    position: relative;
+
+}
+
+.close_icon{
+    position: absolute;
+    top: 23px;
+    left: 23px;
+}
+
+.header_title{
+    color: white;
+    text-align: right;
+    font-size: 47px;
+    margin-right: 40px;
+    padding-top: 13px;
+    font-family: Aduma;
+}
+
+.btn_upload{
+    background-color: #475366;
+    color: white;
+    border: 0;
+    padding: 8px;
+    border-radius: 20px;
+    padding-left: 35px;
+    margin-left: 20px;
+    background-image: url(./assets/Upload.png);
+    background-repeat: no-repeat;
+    background-position: 10px;
+    padding-right: 12px;
+}
