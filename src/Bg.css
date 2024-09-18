@@ -26,6 +26,8 @@
 }
 
 .btn_upload{
+
+    
     background-color: #475366;
     color: white;
     border: 0;
@@ -37,4 +39,7 @@
     background-repeat: no-repeat;
     background-position: 10px;
     padding-right: 12px;
+
+
+    
 }
