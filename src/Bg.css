@@ -161,3 +161,22 @@
 .selected_tab{
     border-bottom: 4px solid #9C27B0;
 }
+
+.eula_text_popup{
+    background-color: white;
+    color: black;
+    position: absolute;
+    top: 102px;
+    width: 815px;
+    height: 800px;
+    margin-left: 219px;
+    border-radius: 28px;
+}
+
+.layout{
+    background-color: #000000d4;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}

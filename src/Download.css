@@ -1,0 +1,63 @@
+.Download_title{
+    color: white;
+    font-size: 26px;
+    font-family: 'Aduma';
+    text-align: right;
+    padding-top: 20px;
+}
+
+.Download_cont{
+    height: 196px;
+    padding-right: 20px;
+    position: relative;
+}
+
+.border_line{
+    border-bottom: 1px solid gray;
+}
+
+.sub_title{
+    color: white;
+    font-size: 20px;
+    font-family: 'Aduma';
+    text-align: right;
+
+}
+
+.Download_btn{
+    width: 90%;
+    margin-left: 10%;
+    margin-top: 15px;
+    border: 1px solid #03A9F4;
+    background-color: transparent;
+    color: #03A9F4;
+    border-radius: 50px;
+    font-size: 16px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.Download_small_text{
+    color: #ffffff94;
+    text-align: right;
+    font-size: 12px;
+    margin-top: 7px;
+    margin-right: 16px;
+}
+
+.check{
+    position: absolute;
+    right: 19px;
+    top: 132px;
+}
+
+
+.new_icon{
+    position: absolute;
+    top: 17px;
+    right: 8px;
+}
+
+.margin_text{
+    margin-right: 55px;
+}
