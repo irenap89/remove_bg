@@ -17,7 +17,7 @@ function Bg() {
         <div className='header_title'> העלאת תמונה כדי להסיר את הרקע </div> 
         <button className='btn_upload'>העלאת תמונה</button>
 
-        <div className="small_text"> פורמטים נתמכים png, jpg</div>
+        <div className="small_text"> פורמטים נתמכים png, jpg dsfgdsfg</div>
 
 
          <div className="middle_div">
