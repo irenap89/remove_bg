@@ -141,6 +141,7 @@
     font-family: 'Aduma';
     width: 133px;
     text-align: center;
+    cursor: pointer;
 }
 
 .tabs_1{
@@ -165,12 +166,27 @@
 .eula_text_popup{
     background-color: white;
     color: black;
-    position: absolute;
-    top: 102px;
     width: 815px;
     height: 800px;
-    margin-left: 219px;
     border-radius: 28px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 50px;
+}
+
+.download_text_popup{
+    background-color: white;
+    color: black;
+    width: 715px;
+    height: 350px;
+    border-radius: 5px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 50px;
 }
 
 .layout{
@@ -179,4 +195,55 @@
     top: 0;
     width: 100%;
     height: 100%;
+}
+
+.close_eula_text_popup{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+}
+
+.download_folder{
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: -35px;
+    left: 384px;
+    background-color: white;
+    box-shadow: 1px 1px 10px #9c27b078;
+    border-radius: 4px;
+}
+
+.download_folder_img{
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    width: 45px;
+}
+
+.download_text{
+    text-align: center;
+    font-size: 51px;
+    font-family: 'Aduma';
+    color: #1e1e55;
+}
+
+.download_subtext{
+    margin-top: 32px;
+    text-align: center;
+    direction: rtl;
+    color: #1e1e55;
+}
+
+.not_robot_text{
+    color: #1e1e55;
+    font-size: 12px;
+}
+
+.not_robot_cont{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 53px;
+    margin-right: 84px;
 }

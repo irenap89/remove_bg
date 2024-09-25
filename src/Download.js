@@ -14,7 +14,7 @@ function Download(props) {
 
             <div className='sub_title'> {props.sub_title} </div>
        
-            <button className='Download_btn'> {props.btn_text} </button>
+            <button className='Download_btn' onClick={()=>props.open_download_popup()}> {props.btn_text} </button>
        
             <div className='Download_small_text'> {props.small_text} </div> <img src={check} className='check'/>
        </div>
