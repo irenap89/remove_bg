@@ -234,6 +234,7 @@
     text-align: center;
     direction: rtl;
     color: #1e1e55;
+    font-size: 22px;
 }
 
 .not_robot_text{
@@ -246,4 +247,49 @@
     flex-direction: row-reverse;
     margin-top: 53px;
     margin-right: 84px;
+}
+
+.not_robot{
+    width: 14px;
+    height: 14px;
+    margin-right: 28px;
+    margin-top: 2px;
+}
+
+.btn_cont{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    gap: 22px;
+    margin-top: 70px;
+}
+
+
+.cancel_btn{
+    height: 43px;
+    width: 130px;
+    border: 1px solid #1e1e55;
+    background-color: transparent;
+    border-radius: 50px;
+    font-family: 'Aduma';
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.approve_btn{
+    height: 43px;
+    width: 190px;
+    background-color: transparent;
+    border-radius: 50px;
+    font-family: 'Aduma';
+    font-size: 20px;
+    background: linear-gradient(259deg, #00BCD4, #9C27B0);
+    color: white;
+    border: 0;
+    cursor: pointer;
+}
+
+.err_msg{
+    text-align: center;
+    color:red
 }

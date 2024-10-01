@@ -8,14 +8,50 @@ import Download from "./Download"
 import close1 from './assets/close1.png'
 import Nobg from './Nobg'
 import download_folder from './assets/Downloads Folder.png'
+import not_robot from './assets/not_robot.png'
+import axios from 'axios';
+
 function Bg() {
 
    const [select_tab, setselect_tab] = useState(1);
    const [show_popup_eula, setshow_popup_eula] = useState(false);
    const [download_popup_eula, setdownload_popup_eula] = useState(false);
+   const [not_robot_checked, setnot_robot_checked] = useState(false);
+   const [err_msg, seterr_msg] = useState('');
    
    function open_download_popup(){
       setdownload_popup_eula(true);
+   }
+
+   function start_download(){
+     
+      if(not_robot_checked){
+       
+         seterr_msg('');
+         // TODO: download img
+      } else {
+         seterr_msg('יש לסמן אני לא רובוט');
+      }
+   }
+
+   function upload_img(){
+
+
+      let formData = new FormData();    //formdata object
+
+      formData.append('name', 'ABC');   //append the values with key, value pair
+      formData.append('age', 20);
+
+      axios.post('http://localhost:3001/get_img',formData)
+      .then(function (response) {
+         // handle success
+         console.log(response);
+      })
+      .catch(function (error) {
+         // handle error
+         console.log(error);
+      })
+
    }
 
   return (
@@ -24,7 +60,7 @@ function Bg() {
 
         <img src={close} className='close_icon'/>
         <div className='header_title'> העלאת תמונה כדי להסיר את הרקע </div> 
-        <button className='btn_upload'>העלאת תמונה</button>
+        <button className='btn_upload' onClick={upload_img} >העלאת תמונה</button>
 
         <div className="small_text"> פורמטים נתמכים png, jpg</div>
 
@@ -89,10 +125,22 @@ function Bg() {
          <div className='download_subtext'>  האם להוריד את התמונה? </div>
 
          <div className='not_robot_cont'> 
-            <input type="checkbox" />
+            <input type="checkbox"  onClick={()=>{setnot_robot_checked(!not_robot_checked)}}/>
             <div className='not_robot_text'> אני לא רובוט </div>
 
+            <img src={not_robot} className='not_robot'/>
+
          </div>
+
+         <div className='btn_cont'>
+
+            <button className='cancel_btn'> ביטול </button>
+            <button className='approve_btn' onClick={start_download}> אישור </button>
+
+         </div>
+
+         {err_msg? <div className='err_msg'> {err_msg} </div>: ''}
+
       </div>
    </>
    :<></>}
