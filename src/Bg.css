@@ -293,3 +293,15 @@
     text-align: center;
     color:red
 }
+
+.input_file{
+    display: none;
+}
+
+
+.err_msg_file {
+    text-align: center;
+    color: red;
+    position: absolute;
+    margin-left: 34px;
+}

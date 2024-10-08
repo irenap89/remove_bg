@@ -3,13 +3,14 @@ import './Bg.css';
 import close from './assets/close.png'
 import logo from './assets/logo.png'
 import banner from './assets/banner.png'
-import { useState } from 'react';
+import { useState ,useRef } from 'react';
 import Download from "./Download"
 import close1 from './assets/close1.png'
 import Nobg from './Nobg'
 import download_folder from './assets/Downloads Folder.png'
 import not_robot from './assets/not_robot.png'
 import axios from 'axios';
+
 
 function Bg() {
 
@@ -18,6 +19,7 @@ function Bg() {
    const [download_popup_eula, setdownload_popup_eula] = useState(false);
    const [not_robot_checked, setnot_robot_checked] = useState(false);
    const [err_msg, seterr_msg] = useState('');
+   const [show_err, set_show_err] = useState('');
    
    function open_download_popup(){
       setdownload_popup_eula(true);
@@ -34,25 +36,39 @@ function Bg() {
       }
    }
 
-   function upload_img(){
+
+   const inputElement = useRef();
+
+   const focusInput = () => {
+      inputElement.current.click();
+   };
 
 
-      let formData = new FormData();    //formdata object
+   function upload_file(file_obj){
 
-      formData.append('name', 'ABC');   //append the values with key, value pair
-      formData.append('age', 20);
+      if (file_obj.type=='image/png' || file_obj.type=='image/jpg' || file_obj.type=='image/jpeg') {
+      
+               
+            let formData = new FormData();    //formdata object
 
-      axios.post('http://localhost:3001/get_img',formData)
-      .then(function (response) {
-         // handle success
-         console.log(response);
-      })
-      .catch(function (error) {
-         // handle error
-         console.log(error);
-      })
+            formData.append('file', file_obj);   //append the values with key, value pair
+        
+            axios.post('http://localhost:3001/get_img',formData)
+            .then(function (response) {
+               // handle success
+               console.log(response);
+            })
+            .catch(function (error) {
+               // handle error
+               console.log(error);
+            })
+
+      } else {
+         set_show_err('קובץ לא נתמך')
+      }
 
    }
+
 
   return (
    <>
@@ -60,10 +76,11 @@ function Bg() {
 
         <img src={close} className='close_icon'/>
         <div className='header_title'> העלאת תמונה כדי להסיר את הרקע </div> 
-        <button className='btn_upload' onClick={upload_img} >העלאת תמונה</button>
+        <button className='btn_upload' onClick={focusInput} >העלאת תמונה</button>
+        <input type="file" ref={inputElement} className='input_file' onChange={(e)=>upload_file(e.target.files[0])} />
 
         <div className="small_text"> פורמטים נתמכים png, jpg</div>
-
+         {show_err? <div className='err_msg_file'> {show_err} </div> : ''}
 
          <div className="middle_div">
             <div className="left_div">
