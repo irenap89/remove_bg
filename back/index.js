@@ -3,6 +3,7 @@ var fs = require('fs');
 const express = require('express');
 const app = express();
 
+
 var cors = require('cors')
 
 app.use(cors())
@@ -10,12 +11,20 @@ app.use(cors())
 var fileupload = require("express-fileupload");
 app.use(fileupload());
 
+app.use(express.static("no_bg_img"));
+app.use(express.static("upload_img"));
 
 
 app.post('/get_img', function (req, res) {
 
-  //  console.log(req.files);
-    let fileName= req.files.file.name;
+    let date= new Date().getTime();
+
+    let fileName= date + '_' + req.files.file.name;
+
+    let color=req.body.color;
+
+   /// console.log(color);
+
 
     req.files.file.mv(__dirname + '/upload_img/' + fileName , async function(err) {
         if(err){
@@ -25,20 +34,25 @@ app.post('/get_img', function (req, res) {
             //api remov
             const inputPath = __dirname + '/upload_img/' + fileName; // path to original image
             const fileBlob = await fs.openAsBlob(inputPath) // open original image as blob
-            const rbgResultData = await removeBg(fileBlob); // send  original image  to function
-            fs.writeFileSync(__dirname + '/no_bg_img/' + fileName, Buffer.from(rbgResultData)); // wite response image to folder
+            const rbgResultData = await removeBg(fileBlob,color); // send  original image  to function
+            fs.writeFileSync(__dirname + '/no_bg_img/' +  'no_bg_'+fileName, Buffer.from(rbgResultData)); // wite response image to folder
             
+            res.send(fileName);
+
         }
    });
 
-    res.send('Hello Worlddfsgsdfgsdfg dfg')
+
 })
 
 
-async function removeBg(blob) {
+async function removeBg(blob,color) {
     const formData = new FormData();
     formData.append("size", "auto");
     formData.append("image_file", blob);
+
+    formData.append("bg_color", color);
+
   
     const response = await fetch("https://api.remove.bg/v1.0/removebg", {
       method: "POST",

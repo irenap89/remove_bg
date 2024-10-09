@@ -305,3 +305,21 @@
     position: absolute;
     margin-left: 34px;
 }
+
+.loader_in{
+    width: 39%;
+    background: linear-gradient(89deg, #673AB7, #03A9F4);
+    text-align: center;
+    color: white;
+    border: 1px solid black;
+}
+
+.loader{
+    position: absolute;
+    width: 424px;
+    /* margin: 0 auto; */
+    /* display: block; */
+    left: 132px;
+    top: 239px;
+    box-shadow: 1px 1px 10px #ffffff8c;
+}

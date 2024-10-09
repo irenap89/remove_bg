@@ -20,6 +20,11 @@ function Bg() {
    const [not_robot_checked, setnot_robot_checked] = useState(false);
    const [err_msg, seterr_msg] = useState('');
    const [show_err, set_show_err] = useState('');
+
+   const [image_name, setimage_name] = useState('');
+   const [show_loader, setshow_loader] = useState(false);
+
+   const [color, setcolor] = useState('');
    
    function open_download_popup(){
       setdownload_popup_eula(true);
@@ -44,19 +49,25 @@ function Bg() {
    };
 
 
-   function upload_file(file_obj){
+   async function upload_file(file_obj){
+
+      // console.log(color);
 
       if (file_obj.type=='image/png' || file_obj.type=='image/jpg' || file_obj.type=='image/jpeg') {
       
-               
+         setshow_loader(true);
             let formData = new FormData();    //formdata object
 
             formData.append('file', file_obj);   //append the values with key, value pair
-        
-            axios.post('http://localhost:3001/get_img',formData)
+            formData.append('color', color);  
+
+           await axios.post('http://localhost:3001/get_img',formData)
             .then(function (response) {
-               // handle success
-               console.log(response);
+               debugger;
+
+               setimage_name(response.data);
+               setshow_loader(false);
+         
             })
             .catch(function (error) {
                // handle error
@@ -91,7 +102,11 @@ function Bg() {
 
                   <div className="left_div_in">
                      
-                    {select_tab==1 ? <Nobg type="1"/>  : <Nobg type="2"/>   }
+                    {select_tab==1 ? <Nobg type="1" img={image_name} setcolor={setcolor}/>  : <Nobg type="2" img={image_name} setcolor={setcolor}/>   }
+                     {show_loader? <div className='loader'> 
+                        <div className='loader_in'> 39% </div>
+                     </div> : <></>}
+
                   </div>
                   <button className="btn_eula" onClick={()=>setshow_popup_eula(true)}> תקנון החברה </button>
 

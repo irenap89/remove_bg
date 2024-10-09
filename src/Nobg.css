@@ -42,3 +42,13 @@
     width: 679px;
     top: 117px;
 }
+
+.span_color{
+    width: 44px;
+    height: 25px;
+    position: absolute;
+    left: 0px;
+    top: 0;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+}
