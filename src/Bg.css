@@ -323,3 +323,10 @@
     top: 239px;
     box-shadow: 1px 1px 10px #ffffff8c;
 }
+
+.open_download_popup_err{
+    position: absolute;
+    color: red;
+    text-align: right;
+    right: 30px;
+}

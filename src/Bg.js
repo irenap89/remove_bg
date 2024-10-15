@@ -23,6 +23,7 @@ function Bg() {
 
    const [image_name, setimage_name] = useState('');
    const [show_loader, setshow_loader] = useState(false);
+   const [fake, setfake] = useState(false);
 
    const [color, setcolor] = useState('');
    
@@ -35,7 +36,20 @@ function Bg() {
       if(not_robot_checked){
        
          seterr_msg('');
-         // TODO: download img
+
+         fetch('http://localhost:3001/no_bg_'+image_name)
+         .then(response => {
+             response.blob().then(blob => {
+                 let url = window.URL.createObjectURL(blob);
+                 let a = document.createElement('a'); // <a> </a>
+                 a.href = url; // <a href="url"> </a>
+                 a.download = image_name; // <a href="/assests...." download="image_name"> </a>
+                 a.click();
+
+                 setdownload_popup_eula(false)
+             });
+       });
+
       } else {
          seterr_msg('יש לסמן אני לא רובוט');
       }
@@ -66,6 +80,7 @@ function Bg() {
                debugger;
 
                setimage_name(response.data);
+
                setshow_loader(false);
          
             })
@@ -113,7 +128,12 @@ function Bg() {
                   <div className="eula_text"> על ידי העלאת תמונה אתה מסכים לתנאים וההגבלות</div>
             </div>
 
+            
+
             <div className="right_div">
+
+               {download_popup_eula && image_name=='' ? <div className='open_download_popup_err'> יש להעלות תמונה</div>: <></> }
+
                <div className="right_div_in">
                   <Download  open_download_popup={open_download_popup} title="תמונה חינם" sub_title="תצוגה מקדימה של תמונה" btn_text="הורד" small_text="איכות טובה עד 0.25 מגה פיקסל"></Download>
                   <Download title="Pro"  sub_title="תמונה מלאה"  btn_text=" HD הורד"  small_text="האיכות הטובה ביותר עד 25 מגה פיקסל"></Download>
@@ -143,7 +163,7 @@ function Bg() {
    :<></>}
 
 
-{download_popup_eula?
+{download_popup_eula && image_name?
    <>
       <div className='layout'></div>
       <div className='download_text_popup'>
@@ -166,7 +186,7 @@ function Bg() {
 
          <div className='btn_cont'>
 
-            <button className='cancel_btn'> ביטול </button>
+            <button className='cancel_btn' onClick={()=>setdownload_popup_eula(false)}> ביטול </button>
             <button className='approve_btn' onClick={start_download}> אישור </button>
 
          </div>
