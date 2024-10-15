@@ -136,7 +136,7 @@ function Bg() {
 
                <div className="right_div_in">
                   <Download  open_download_popup={open_download_popup} title="תמונה חינם" sub_title="תצוגה מקדימה של תמונה" btn_text="הורד" small_text="איכות טובה עד 0.25 מגה פיקסל"></Download>
-                  <Download title="Pro"  sub_title="תמונה מלאה"  btn_text=" HD הורד"  small_text="האיכות הטובה ביותר עד 25 מגה פיקסל"></Download>
+                  <Download title="Pro" open_download_popup={open_download_popup}  sub_title="תמונה מלאה"  btn_text=" HD הורד"  small_text="האיכות הטובה ביותר עד 25 מגה פיקסל"></Download>
                    </div>
             </div>
 
